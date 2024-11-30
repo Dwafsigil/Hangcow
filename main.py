@@ -28,14 +28,14 @@ class HangcowGUI:
              "tail", "barn", "stall", "feedlot", "slaughterhouse", "butchery", "branding", "farmer", "ranch", "livestock",
              "cream", "cheese", "hay", "manure", "steak", "flat iron", "prime rib", "medium rare", "well done", "barbecue"]
 
-        self.word = random.choice(self.words) # Chooses a random word from the words list
-        self.guessed = set() # Keeps track of letters guessed so far
-        self.attempts = 6 # The number of attempts the player has left
+        self.secret_word = random.choice(self.words) # Chooses a random word from the words list
+        self.guessed_letters = set() # Keeps track of letters guessed so far
+        self.attempts_left = 6 # The number of attempts the player has left
         self.hangcow_graphics = ["🥩", "𓃒", "𓄀", "𓃾", "𓃿", "𓃉", " "] # These are the graphics corresponding to the current attempt. Attempts = 0 would show steak, 1 would show cow, etc.
 
         # GUI Components
         # Displays the hangcow_graphics corresponding to current player attempt
-        self.hangcow_graphics_label = tk.Label(root, text=self.hangcow_graphics[self.attempts], font=("Arial", 60))
+        self.hangcow_graphics_label = tk.Label(root, text=self.hangcow_graphics[self.attempts_left], font=("Arial", 60))
         self.hangcow_graphics_label.pack(pady=10) # Adding a bit of y distance between the UI elements
 
         # Displays the randomly chosen word. Parts of the word will be "_" to show that the letter hasn't been guessed yet
@@ -57,8 +57,8 @@ class HangcowGUI:
        word_state_list = []  # Creating an empty list to store the letters and underscores
 
        # Looping through each letter in the word
-       for letter in self.word:
-           if letter in self.guessed: # Checking if the letter in the word was guessed already
+       for letter in self.secret_word:
+           if letter in self.guessed_letters: # Checking if the letter in the word was guessed already
                 word_state_list.append(letter) # Adding the letter to the word_state_list
            else:
                word_state_list.append("_") # If the letter wasn't guessed already then replace with an underscore in the word_state_list
@@ -72,7 +72,7 @@ class HangcowGUI:
 
         # This part of the logic ensures that the guess is a valid guess
         # Ensures that you already haven't guessed a certain letter
-        if guess in self.guessed:
+        if guess in self.guessed_letters:
             self.message_label.config(text="You already guessed that letter man.") # Update the message_label
             return
 
@@ -81,17 +81,17 @@ class HangcowGUI:
             self.message_label.config(text="Do you even know what a letter is?")
             return
 
-        self.guessed.add(guess) # If everything is correct, the letter is added into the "guessed" letter set
+        self.guessed_letters.add(guess) # If everything is correct, the letter is added into the "guessed" letter set
 
         # If the letter is actually in the word
-        if guess in self.word:
+        if guess in self.secret_word:
             self.message_label.config(text="Yippee!")
             self.word_label.config(text=self.display_word())
             right_answer.play() # Plays the audio clip
             #playsound("ding-sound-effect_1.mp3")
             # If all the letters are guessed
-            if set(self.word).issubset(self.guessed): # Checks if the letters in the word are in the guessed set
-                self.word_label.config(text=self.word) # Updates the word_label to word
+            if set(self.secret_word).issubset(self.guessed_letters): # Checks if the letters in the word are in the guessed set
+                self.word_label.config(text=self.secret_word) # Updates the word_label to word
                 self.message_label.config(text="Well done!... or maybe not?")
                 #time.sleep(1)
                 game_won.play()
@@ -99,15 +99,15 @@ class HangcowGUI:
 
         # If the letter that was guessed wasn't in the word
         else:
-            self.attempts -= 1 # Decrement the attempts
-            self.hangcow_graphics_label.config(text=self.hangcow_graphics[self.attempts]) # Update the cow graphic
+            self.attempts_left -= 1 # Decrement the attempts
+            self.hangcow_graphics_label.config(text=self.hangcow_graphics[self.attempts_left]) # Update the cow graphic
             self.message_label.config(text="Womp womp")
             #playsound("roblox-death-sound_1.mp3")
             wrong_answer.play()
 
             # If the player runs out of attempts
-            if self.attempts == 0:
-                self.word_label.config(text=self.word) # Reveal the actual word
+            if self.attempts_left == 0:
+                self.word_label.config(text=self.secret_word) # Reveal the actual word
                 self.message_label.config(text="Game over! A steak well done!")
                 time.sleep(1) # delay the wrong_answer audio clip so it doesn't overlap with the game_lost audio clip
                 game_lost.play()
