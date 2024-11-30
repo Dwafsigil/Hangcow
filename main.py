@@ -28,7 +28,7 @@ class HangcowGUI:
              "tail", "barn", "stall", "feedlot", "slaughterhouse", "butchery", "branding", "farmer", "ranch", "livestock",
              "cream", "cheese", "hay", "manure", "steak", "flat iron", "prime rib", "medium rare", "well done", "barbecue"]
 
-        self.secret_word = random.choice(self.words) # Chooses a random word from the words list
+        self.secret_word = random.choice(self.word_list) # Chooses a random word from the words list
         self.guessed_letters = set() # Keeps track of letters guessed so far
         self.attempts_left = 6 # The number of attempts the player has left
         self.hangcow_graphics = ["🥩", "𓃒", "𓄀", "𓃾", "𓃿", "𓃉", " "] # These are the graphics corresponding to the current attempt. Attempts = 0 would show steak, 1 would show cow, etc.
