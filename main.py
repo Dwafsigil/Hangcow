@@ -18,7 +18,7 @@ class HangcowGUI:
     # Setting up the main window of the GUI
     def __init__(self, root):
         root.title("Hangcow") # Title of the app
-        root.geometry("800x500") # Setting dimensions of window
+        root.geometry("900x500") # Setting dimensions of window
 
         # Creating the Variables
         # Word List (Note: Every word is cow-related) Could up complexity by adding more words and set easy, normal, and hard difficulty
