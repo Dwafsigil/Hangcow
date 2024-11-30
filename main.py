@@ -43,9 +43,9 @@ class HangcowGUI:
         self.word_label.pack(pady=15)
 
         # Entry box to make your guesses
-        self.guess_entry = tk.Entry(root, font=("Arial", 40), justify="center")
-        self.guess_entry.pack(pady=10)
-        self.guess_entry.bind("<Return>", self.player_guess) # When you hit the enter key, you submit the letter as your guess and it runs through the make_guess method to update game state
+        self.player_entry = tk.Entry(root, font=("Arial", 40), justify="center")
+        self.player_entry.pack(pady=10)
+        self.player_entry.bind("<Return>", self.player_guess) # When you hit the enter key, you submit the letter as your guess and it runs through the make_guess method to update game state
 
         # Message box to update the game state for the players the see
         self.message_label = tk.Label(root, text="Hurry up and guess.", font=("Arial", 36))
@@ -67,8 +67,8 @@ class HangcowGUI:
     # This method is the logic for the game
     def player_guess(self, event=None):
 
-        guess = self.guess_entry.get().lower() # The entries are input into the guess variable in lowercase
-        self.guess_entry.delete(0, tk.END) # Clean the previous guess_entry so it doesn't get in the way
+        guess = self.player_entry.get().lower() # The entries are input into the guess variable in lowercase
+        self.player_entry.delete(0, tk.END) # Clean the previous guess_entry so it doesn't get in the way
 
         # This part of the logic ensures that the guess is a valid guess
         # Ensures that you already haven't guessed a certain letter
@@ -115,8 +115,8 @@ class HangcowGUI:
 
     # This method is responsible for "ending the game" or disallowing the users from entering anymore inputs.
     def end_Game(self):
-        self.guess_entry.config(state="disabled") # Makes it where you can't type in the entry
-        self.guess_entry.unbind("<Return>") # There was an issue with being able to hit enter, so I disabled the ability to hit enter
+        self.player_entry.config(state="disabled") # Makes it where you can't type in the entry
+        self.player_entry.unbind("<Return>") # There was an issue with being able to hit enter, so I disabled the ability to hit enter
 
 # Creates the application window, creates an instance of the HangcowGUI class, then runs the event loop.
 root = tk.Tk()
