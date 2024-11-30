@@ -17,9 +17,8 @@ game_won = pygame.mixer.Sound("yippee-sound-effect.mp3")
 class HangcowGUI:
     # Setting up the main window of the GUI
     def __init__(self, root):
-        self.root = root
-        self.root.title("Hangcow") # Title of the app
-        self.root.geometry("400x300") # Setting dimensions of window
+        root.title("Hangcow") # Title of the app
+        root.geometry("400x300") # Setting dimensions of window
 
         # Creating the Variables
         # Word List (Note: Every word is cow-related) Could up complexity by adding more words and set easy, normal, and hard difficulty
