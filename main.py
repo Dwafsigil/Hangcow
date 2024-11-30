@@ -35,8 +35,8 @@ class HangcowGUI:
 
         # GUI Components
         # Displays the hangcow_graphics corresponding to current player attempt
-        self.hangcow_label = tk.Label(root, text=self.hangcow_graphics[self.attempts], font=("Arial", 60))
-        self.hangcow_label.pack(pady=10) # Adding a bit of y distance between the UI elements
+        self.hangcow_graphics_label = tk.Label(root, text=self.hangcow_graphics[self.attempts], font=("Arial", 60))
+        self.hangcow_graphics_label.pack(pady=10) # Adding a bit of y distance between the UI elements
 
         # Displays the randomly chosen word. Parts of the word will be "_" to show that the letter hasn't been guessed yet
         self.word_label = tk.Label(root, text=self.display_word(), font =("Arial",60)) #display_word is the method that has the logic for the letter and underscores
@@ -100,7 +100,7 @@ class HangcowGUI:
         # If the letter that was guessed wasn't in the word
         else:
             self.attempts -= 1 # Decrement the attempts
-            self.hangcow_label.config(text=self.hangcow_graphics[self.attempts]) # Update the cow graphic
+            self.hangcow_graphics_label.config(text=self.hangcow_graphics[self.attempts]) # Update the cow graphic
             self.message_label.config(text="Womp womp")
             #playsound("roblox-death-sound_1.mp3")
             wrong_answer.play()
