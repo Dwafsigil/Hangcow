@@ -22,7 +22,7 @@ class HangcowGUI:
 
         # Creating the Variables
         # Word List (Note: Every word is cow-related) Could up complexity by adding more words and set easy, normal, and hard difficulty
-        self.words = ["cow", "cattle", "calf", "bull", "heifer", "ox", "steer", "bovine", "udder", "hoof",
+        self.word_list = ["cow", "cattle", "calf", "bull", "heifer", "ox", "steer", "bovine", "udder", "hoof",
              "horn", "muzzle", "hide", "leather", "herd", "pasture", "graze", "milk", "dairy", "flank",
              "beef", "veal", "rump", "brisket", "ribeye", "grass", "cud", "sirloin", "salisbury",
              "tail", "barn", "stall", "feedlot", "slaughterhouse", "butchery", "branding", "farmer", "ranch", "livestock",
