@@ -18,7 +18,7 @@ class HangcowGUI:
     # Setting up the main window of the GUI
     def __init__(self, root):
         root.title("Hangcow") # Title of the app
-        root.geometry("400x300") # Setting dimensions of window
+        root.geometry("800x500") # Setting dimensions of window
 
         # Creating the Variables
         # Word List (Note: Every word is cow-related) Could up complexity by adding more words and set easy, normal, and hard difficulty
@@ -35,20 +35,20 @@ class HangcowGUI:
 
         # GUI Components
         # Displays the hangcow_graphics corresponding to current player attempt
-        self.hangcow_label = tk.Label(root, text=self.hangcow_graphics[self.attempts], font=("Arial", 30))
+        self.hangcow_label = tk.Label(root, text=self.hangcow_graphics[self.attempts], font=("Arial", 60))
         self.hangcow_label.pack(pady=10) # Adding a bit of y distance between the UI elements
 
         # Displays the randomly chosen word. Parts of the word will be "_" to show that the letter hasn't been guessed yet
-        self.word_label = tk.Label(root, text=self.display_word(), font =("Arial",30)) #display_word is the method that has the logic for the letter and underscores
+        self.word_label = tk.Label(root, text=self.display_word(), font =("Arial",60)) #display_word is the method that has the logic for the letter and underscores
         self.word_label.pack(pady=15)
 
         # Entry box to make your guesses
-        self.guess_entry = tk.Entry(root, font=("Arial", 20), justify="center")
+        self.guess_entry = tk.Entry(root, font=("Arial", 40), justify="center")
         self.guess_entry.pack(pady=10)
         self.guess_entry.bind("<Return>", self.player_guess) # When you hit the enter key, you submit the letter as your guess and it runs through the make_guess method to update game state
 
         # Message box to update the game state for the players the see
-        self.message_label = tk.Label(root, text="Hurry up and guess.", font=("Arial", 18))
+        self.message_label = tk.Label(root, text="Hurry up and guess.", font=("Arial", 36))
         self.message_label.pack(pady=10)
 
     # This is the working part of the game
