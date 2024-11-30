@@ -49,7 +49,7 @@ class HangcowGUI:
         self.guess_entry.bind("<Return>", self.player_guess) # When you hit the enter key, you submit the letter as your guess and it runs through the make_guess method to update game state
 
         # Message box to update the game state for the players the see
-        self.message_label = tk.Label(root, text="Hurry up and guess please.", font=("Arial", 18))
+        self.message_label = tk.Label(root, text="Hurry up and guess.", font=("Arial", 18))
         self.message_label.pack(pady=10)
 
     # This is the working part of the game
