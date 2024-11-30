@@ -5,6 +5,8 @@ import pygame
 import time
 #from PIL import Image, ImageTk
 
+# Testing that github is working and stuff
+
 # Setting up sound effects and assigning them to variables
 pygame.mixer.init()
 wrong_answer = pygame.mixer.Sound("roblox-oof-sound.mp3")
