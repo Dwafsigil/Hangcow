@@ -95,7 +95,7 @@ class HangcowGUI:
                 self.message_label.config(text="Well done!... or maybe not?")
                 #time.sleep(1)
                 game_won.play()
-                self.end_Game() # Ends the game
+                self.end_game() # Ends the game
 
         # If the letter that was guessed wasn't in the word
         else:
@@ -111,10 +111,10 @@ class HangcowGUI:
                 self.message_label.config(text="Game over! A steak well done!")
                 time.sleep(1) # delay the wrong_answer audio clip so it doesn't overlap with the game_lost audio clip
                 game_lost.play()
-                self.end_Game()
+                self.end_game()
 
     # This method is responsible for "ending the game" or disallowing the users from entering anymore inputs.
-    def end_Game(self):
+    def end_game(self):
         self.player_entry.config(state="disabled") # Makes it where you can't type in the entry
         self.player_entry.unbind("<Return>") # There was an issue with being able to hit enter, so I disabled the ability to hit enter
 
